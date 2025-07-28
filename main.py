@@ -3,6 +3,7 @@ import sys
 import logging
 import os
 
+# corrected logging configuration with uppercase 'basicConfig'
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def install_requirements():
@@ -17,7 +18,7 @@ def install_requirements():
         logging.error(f"Run the command manually for more details: '{sys.executable} -m pip install --upgrade -r requirements.txt'")
         sys.exit(1)
     except FileNotFoundError:
-        logging.error("Python or pip not found. Ensure Python is installed and added to your PATH.")
+        logging.error("Python or pip not found. Ensure Python is installed and added to your path.")
         sys.exit(1)
     except Exception as e:
         logging.error(f"Unexpected error installing requirements: {e}")
@@ -27,7 +28,7 @@ def run_ezoptions():
     logging.info("Running ezoptions.py via Streamlit...")
     try:
         # Use sys.executable to ensure we use the same Python that’s running the script
-        subprocess.check_call([sys.executable, "-m", "streamlit", "run", "https://raw.githubusercontent.com/EazyDuz1t/EzOptions/refs/heads/main/ezoptions.py"])
+        subprocess.check_call([sys.executable, "-m", "streamlit", "run", "https://raw.githubusercontent.com/eazyduz1t/ezoptions/refs/heads/main/ezoptions.py"])
         logging.info("Successfully ran ezoptions.py using Streamlit.")
     except subprocess.CalledProcessError as e:
         logging.error(f"Error running ezoptions.py: {e}")
